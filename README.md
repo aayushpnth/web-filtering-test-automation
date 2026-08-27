@@ -86,35 +86,6 @@ Results are written to `results/<vendor>_<deployment>.csv`. Try it against the b
 * **Block page detection:** extend `BLOCK_PAGE_MARKERS` in `browser.py` with the phrases your products show on their block pages.
 * **Log parsing:** override `parse_entry` and `MALICIOUS_CATEGORY_KEYWORDS` in `syslog_collector.py` to match your product log format. Some products delay log forwarding, so tune the wait in `runner.py` accordingly.
 
-## Publishing this to GitHub
-
-Before the first push, confirm no sensitive file is staged:
-
-```bash
-git status                 # config.yaml, .env, corpus/, results/ must NOT appear
-git check-ignore config.yaml .env corpus results screenshots   # each should print, meaning it is ignored
-```
-
-Then create and push the repository:
-
-```bash
-git init
-git add .
-git commit -m "Initial public release: URL filtering test harness"
-git branch -M main
-# create an empty repo on GitHub first, then:
-git remote add origin https://github.com/<your-org>/url-filtering-test-harness.git
-git push -u origin main
-```
-
-If you ever committed a secret by mistake, rotate that credential immediately and remove it from history (for example with `git filter-repo`) before making the repository public.
-
-### Suggested repository settings
-
-* Add topics such as `security`, `url-filtering`, `automation`, `playwright`.
-* Enable branch protection on `main`.
-* Keep the MIT license (see `LICENSE`).
-
 ## License
 
 MIT.
