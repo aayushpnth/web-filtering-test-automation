@@ -1,0 +1,32 @@
+# ---------------------------------------------------------------------------
+# URL Filtering Test Harness - EXAMPLE configuration
+# Copy to config.yaml (git-ignored) and fill in. Use ${ENV:VAR} for secrets;
+# put the actual values in a .env file (also git-ignored).
+# ---------------------------------------------------------------------------
+
+run:
+  results_dir: ./results          # git-ignored
+
+corpus:
+  path: ./corpus/urls.csv         # git-ignored; your benign+malicious URL list
+
+vendors:
+  - name: vendor_a
+    deployment: on-prem           # on-prem | sse | fwaas
+    management_host: ${ENV:VENDOR_A_HOST}
+    username: ${ENV:VENDOR_A_USER}
+    password: ${ENV:VENDOR_A_PASS}
+
+  - name: vendor_b
+    deployment: sse
+    management_host: ${ENV:VENDOR_B_HOST}
+    api_token: ${ENV:VENDOR_B_API_TOKEN}
+
+syslog:
+  bind_host: ${ENV:SYSLOG_BIND_HOST}
+  bind_port: ${ENV:SYSLOG_BIND_PORT}
+
+browser:
+  headless: true
+  screenshot_dir: ./screenshots   # git-ignored
+  page_timeout_seconds: 30

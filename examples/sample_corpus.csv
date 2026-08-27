@@ -1,0 +1,6 @@
+url,type,expected_category
+https://example.com,BENIGN,information-technology
+https://example.org,BENIGN,information-technology
+https://benign-sample.test,BENIGN,business
+https://malicious-sample-1.test,MALICIOUS,
+https://malicious-sample-2.test,MALICIOUS,
